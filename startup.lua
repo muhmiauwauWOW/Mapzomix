@@ -16,6 +16,17 @@ addon:SetScript("OnEvent", function()
         DevTool:AddData(config)
        module:Init(config)
     end)
+
+
+    
+    hooksecurefunc(MapLinkPinMixin, "SetTexture", function(self, poiInfo)
+
+
+        print(poiInfo.atlasName)
+        DevTool:AddData(poiInfo, "test")
+    end)
+
+
 end)
 
 

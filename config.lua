@@ -25,3 +25,39 @@ Mapzomix.modules = CreateMetaTable(SecureModulesMixin)
 
 
 
+Mapzomix.baseMixin = {}
+
+
+function Mapzomix.baseMixin:Init(config)
+    if self.initzializied then return end
+    self.initzialied = true
+
+    print(self.ID)
+    DevTool:AddData(config)
+
+    hooksecurefunc(self.mixin, "SetTexture", function(self, poiInfo)
+        poiInfo.atlasName = config.atlas
+        BaseMapPoiPinMixin.SetTexture(self, poiInfo);
+        self.Texture:SetSize(config.x, config.y);
+        if self.HighlightTexture then
+            self.HighlightTexture:SetSize(config.x, config.y);
+        end
+    end)
+end
+
+
+
+
+
+
+
+-- _.forEach(Mapzomix.moduleData, function(data)
+--     if not data.mixin then return end
+--     local module = CreateFromMixins(Mapzomix.baseMixin, data)
+--     DevTool:AddData(module, module.ID)
+--     Mapzomix.modules:Add(module)
+-- end)
+
+
+
+

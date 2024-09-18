@@ -1,0 +1,73 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	<Frame name="SettingsAtlasWithSizeTemplate" inherits="SettingsListElementTemplate" mixin="SettingsAtlasWithSizeMixin" virtual="true">
+		<Size x="280" y="26"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" x="0" y="0"/>
+		</Anchors>
+		<Frames>
+			<Button parentKey="Atlas">
+				<Size x="26" y="26"/>
+				<Anchors>
+					<Anchor point="LEFT" relativeKey="$parent" relativePoint="Center" x="-80" y="0"/>
+				</Anchors>
+				<HighlightTexture parentKey="HighlightTexture"  setAllPoints="true"  alphaMode="ADD" alpha=".2"/>
+				<NormalTexture parentKey="NormalTexture" setAllPoints="true"/>
+			</Button>
+
+			<EditBox parentKey="AtlasName" inherits="InputBoxTemplate" mixin="SettingsAtlasWithSizeInputMixin">
+				<Size x="160" y="30"/>
+				<KeyValues>
+					<KeyValue key="ID" value="atlas" type="string"/>
+				</KeyValues>
+				<Anchors>
+					<Anchor point="LEFT" relativeKey="$parent.Atlas" relativePoint="RIGHT" x="20" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad method="OnLoad"/>
+					<OnEscapePressed method="OnEscapePressed"/>
+					<OnEditFocusGained method="OnEditFocusGained"/>
+					<OnEditFocusLost method="OnEditFocusLost"/>
+					<OnEnterPressed method="OnEnterPressed"/> 
+				</Scripts> 
+			</EditBox> 
+
+			<EditBox parentKey="X" inherits="InputBoxTemplate" mixin="SettingsAtlasWithSizeInputMixin">
+				<Size x="30" y="30"/>
+				<KeyValues>
+					<KeyValue key="ID" value="x" type="string"/>
+				</KeyValues>
+				<Anchors>
+					<Anchor point="LEFT" relativeKey="$parent.AtlasName" relativePoint="RIGHT" x="10" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad method="OnLoad"/>
+					<OnEscapePressed method="OnEscapePressed"/>
+					<OnEditFocusGained method="OnEditFocusGained"/>
+					<OnEditFocusLost method="OnEditFocusLost"/>
+					<OnEnterPressed method="OnEnterPressed"/> 
+				</Scripts> 
+			</EditBox> 
+
+			<EditBox parentKey="Y" inherits="InputBoxTemplate" mixin="SettingsAtlasWithSizeInputMixin">
+				<Size x="30" y="30"/>
+				<KeyValues>
+					<KeyValue key="ID" value="y" type="string"/>
+				</KeyValues>
+				<Anchors>
+					<Anchor point="LEFT" relativeKey="$parent.X" relativePoint="RIGHT" x="10" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad method="OnLoad"/>
+					<OnEscapePressed method="OnEscapePressed"/>
+					<OnEditFocusGained method="OnEditFocusGained"/>
+					<OnEditFocusLost method="OnEditFocusLost"/>
+					<OnEnterPressed method="OnEnterPressed"/> 
+				</Scripts> 
+			</EditBox> 
+		</Frames>
+		<Scripts>
+			<OnLoad method="OnLoad"/>
+		</Scripts>
+	</Frame>
+</Ui>

@@ -1,0 +1,18 @@
+﻿## Interface: 110002
+## Title: Mapzomix
+## Notes: Replaces Map Point of Interrest textures 
+## Version: @project-version@
+## SavedVariables: MapzomixDB
+## Author: Muhmiauwau
+## X-Curse-Project-ID: 
+
+
+AtlasSettings.lua
+
+config.lua
+modules/FlightMaster.lua
+modules/DungeonEntrance.lua
+options.lua
+startup.lua
+
+frames.xml

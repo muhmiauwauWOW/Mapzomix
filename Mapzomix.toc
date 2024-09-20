@@ -14,6 +14,7 @@ data.lua
 config.lua
 modules/FlightMaster.lua
 modules/DungeonEntrance.lua
+modules/DelveEntrance.lua
 
 
 options.lua

@@ -3,7 +3,7 @@ local _ = LibStub("LibLodash-1"):Get()
 
 
 local function CreateMetaTable(metatable)
-    local Proxies = ProxyUtil.CreateProxyDirectory("Pools.lua", false);
+    local Proxies = ProxyUtil.CreateProxyDirectory("Mapzomix", false);
     local table = {}
     local MetaTable = {}
     do
@@ -28,21 +28,29 @@ Mapzomix.modules = CreateMetaTable(SecureModulesMixin)
 Mapzomix.baseMixin = {}
 
 
-function Mapzomix.baseMixin:Init(config)
-    if self.initzializied then return end
-    self.initzialied = true
-
-    print(self.ID)
-    DevTool:AddData(config)
-
-    hooksecurefunc(self.mixin, "SetTexture", function(self, poiInfo)
+function Mapzomix.baseMixin:defaultSetTextureFn(config)
+    return function(self, poiInfo)
+        -- print("SetTexture", config.atlas)
         poiInfo.atlasName = config.atlas
         BaseMapPoiPinMixin.SetTexture(self, poiInfo);
         self.Texture:SetSize(config.x, config.y);
         if self.HighlightTexture then
             self.HighlightTexture:SetSize(config.x, config.y);
         end
-    end)
+    end
+end
+
+
+function Mapzomix.baseMixin:Init(config)
+    if self.initzializied then return end
+    self.initzialied = true
+
+    print(self.ID)
+    DevTool:AddData(config)
+    print( config.Name,type(config.func) == "function", config.func)
+
+    local fn = type(config.func) == "function" and config:func(config) or self:defaultSetTextureFn(config)
+    hooksecurefunc(self.mixin, "SetTexture", fn)
 end
 
 

@@ -14,16 +14,28 @@ addon:SetScript("OnEvent", function()
     _.forEach(Mapzomix.modules, function(module)
         local config = MapzomixDB[module.ID] or module.default
         DevTool:AddData(config)
-       module:Init(config)
+        config.func = module.func or nil
+        config.module = module
+        module:Init(config)
     end)
 
 
+
+
+
+    hooksecurefunc(DelveEntrancePinMixin, "OnAcquired", function(self, dungeonEntranceInfo)
+
+
+        -- print(poiInfo.atlasName)
+        DevTool:AddData(dungeonEntranceInfo, "dungeonEntranceInfo")
+    end)
+
     
-    hooksecurefunc(MapLinkPinMixin, "SetTexture", function(self, poiInfo)
+    hooksecurefunc(DelveEntrancePinMixin, "SetTexture", function(self, poiInfo)
 
 
-        print(poiInfo.atlasName)
-        DevTool:AddData(poiInfo, "test")
+        -- print(poiInfo.atlasName)
+        DevTool:AddData(poiInfo, poiInfo.atlasName)
     end)
 
 

@@ -16,6 +16,9 @@ modules/FlightMaster.lua
 modules/DungeonEntrance.lua
 modules/DelveEntrance.lua
 modules/DragonridingRace.lua
+# modules/WaypointLocation.lua
+modules/AreaPOIPin.lua
+
 
 modules/MapLink.lua
 

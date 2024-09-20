@@ -61,19 +61,18 @@ end)
 
 
 
--- hooksecurefunc(BaseMapPoiPinMixin, "SetTexture", function(self, poiInfo)
---     if registerdNames[poiInfo.atlasName] then return end
+hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
+    local poiInfo = self:GetPoiInfo()
+    if registerdNames[poiInfo.atlasName] then return end
+    print("öpö", poiInfo.atlasName)
+    DevTool:AddData(poiInfo, poiInfo.atlasName)
+end)
 
---     print("öpö", poiInfo.atlasName)
---     DevTool:AddData(poiInfo, poiInfo.atlasName)
--- end)
 
--- print("ddasdassddddd", DragonridingRaceDataProviderMixin.RefreshAllData)
+hooksecurefunc(DragonridingRaceDataProviderMixin, "RefreshAllData", function(self)
 
--- hooksecurefunc(DragonridingRaceDataProviderMixin, "RefreshAllData", function(self)
-
---     print("ddddd")
--- end)
+    print("ddddd")
+end)
 
 
 

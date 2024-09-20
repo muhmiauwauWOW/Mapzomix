@@ -16,6 +16,7 @@ modules/FlightMaster.lua
 modules/DungeonEntrance.lua
 modules/DelveEntrance.lua
 
+modules/MapLink.lua
 
 options.lua
 startup.lua

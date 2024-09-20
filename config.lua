@@ -30,7 +30,7 @@ Mapzomix.baseMixin = {}
 
 function Mapzomix.baseMixin:defaultSetTextureFn(config)
     return function(self, poiInfo)
-        -- print("SetTexture", config.atlas)
+        --print("SetTexture", poiInfo.atlasName, config.atlas)
         poiInfo.atlasName = config.atlas
         BaseMapPoiPinMixin.SetTexture(self, poiInfo);
         self.Texture:SetSize(config.x, config.y);

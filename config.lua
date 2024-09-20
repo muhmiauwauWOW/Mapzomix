@@ -30,7 +30,7 @@ Mapzomix.baseMixin = {}
 
 function Mapzomix.baseMixin:defaultSetTextureFn(config)
     return function(self, poiInfo)
-        --print("SetTexture", poiInfo.atlasName, config.atlas)
+     --   print("SetTexture", poiInfo.atlasName, config.atlas, config.module.default.atlas)
         poiInfo.atlasName = config.atlas
         BaseMapPoiPinMixin.SetTexture(self, poiInfo);
         self.Texture:SetSize(config.x, config.y);
@@ -44,10 +44,6 @@ end
 function Mapzomix.baseMixin:Init(config)
     if self.initzializied then return end
     self.initzialied = true
-
-    print(self.ID)
-    DevTool:AddData(config)
-    print( config.Name,type(config.func) == "function", config.func)
 
     local fn = type(config.func) == "function" and config:func(config) or self:defaultSetTextureFn(config)
     hooksecurefunc(self.mixin, "SetTexture", fn)

@@ -14,7 +14,7 @@ function Mapzomix.Options:init()
     Settings.RegisterAddOnCategory(category)
     Mapzomix.OptionsID = category:GetID()
 
-    Settings.OpenToCategory(Mapzomix.OptionsID)
+    -- Settings.OpenToCategory(Mapzomix.OptionsID)
     
 
     _.forEach(Mapzomix.modules, function(module)

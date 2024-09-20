@@ -27,18 +27,12 @@ local addonName, Mapzomix = ...
 
 
 
-local SetTextureFn =  function(config)
-    local defaultFn = Mapzomix.baseMixin:defaultSetTextureFn(config)
-    return function(self, poiInfo)
-        if not poiInfo.addPaddingAboveTooltipWidgets then return end
-        defaultFn(self, poiInfo)
-    end
-end
+
 
 
 local module = CreateFromMixins(Mapzomix.baseMixin)
 module.mixin = FlightPointPinMixin
-
+module.func = SetTextureFn
 
 
 local module1 = CreateFromMixins(module)
@@ -57,6 +51,17 @@ module1.default = {
     y = 21
 }
 
+
+module1.func = function(config)
+    local defaultFn = Mapzomix.baseMixin:defaultSetTextureFn(config)
+    return function(self, poiInfo)
+        if poiInfo.isUndiscovered then return end
+        if poiInfo.faction ~= 0 then return end
+        defaultFn(self, poiInfo)
+    end
+end
+
+
 Mapzomix.modules:Add(module1)
 
 
@@ -71,7 +76,14 @@ module2.default = {
     y = 21
 }
 
--- module2.func = SetTextureFn
+module2.func = function(config)
+    local defaultFn = Mapzomix.baseMixin:defaultSetTextureFn(config)
+    return function(self, poiInfo)
+        if not  poiInfo.isUndiscovered then return end
+       defaultFn(self, poiInfo)
+    end
+end
+
 Mapzomix.modules:Add(module2)
 
 
@@ -87,7 +99,15 @@ module3.default = {
     y = 21
 }
 
--- module2.func = SetTextureFn
+module3.func = function(config)
+    local defaultFn = Mapzomix.baseMixin:defaultSetTextureFn(config)
+    return function(self, poiInfo)
+        if poiInfo.isUndiscovered then return end
+        if poiInfo.faction ~= 2 then return end
+        defaultFn(self, poiInfo)
+    end
+end
+
 Mapzomix.modules:Add(module3)
 
 
@@ -102,5 +122,13 @@ module4.default = {
     y = 21
 }
 
--- module2.func = SetTextureFn
+module4.func = function(config)
+    local defaultFn = Mapzomix.baseMixin:defaultSetTextureFn(config)
+    return function(self, poiInfo)
+        if poiInfo.isUndiscovered then return end
+        if poiInfo.faction ~= 1 then return end
+        defaultFn(self, poiInfo)
+    end
+end
+
 Mapzomix.modules:Add(module4)

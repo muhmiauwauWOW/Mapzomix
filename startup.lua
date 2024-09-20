@@ -16,11 +16,11 @@ addon:SetScript("OnEvent", function()
 
     _.forEach(Mapzomix.modules, function(module)
         local config = MapzomixDB[module.ID] or module.default
-        DevTool:AddData(config)
         config.func = module.func or nil
         config.module = module
-        registerdNames[module.default.atlas] = module.default.atlas
+
         module:Init(config)
+        registerdNames[module.default.atlas] = module.default.atlas
     end)
 
 
@@ -35,13 +35,9 @@ addon:SetScript("OnEvent", function()
     -- end)
 
 
-    DevTool:AddData(registerdNames,"registerdNames")
-    hooksecurefunc(BaseMapPoiPinMixin, "SetTexture", function(self, poiInfo)
-        if registerdNames[ poiInfo.atlasName] then return end
+ 
 
-        print("öpö", poiInfo.atlasName)
-        DevTool:AddData(poiInfo, poiInfo.atlasName)
-    end)
+
     
     -- hooksecurefunc(MapLinkPinMixin, "SetTexture", function(self, poiInfo)
 
@@ -52,6 +48,32 @@ addon:SetScript("OnEvent", function()
 
 
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- hooksecurefunc(BaseMapPoiPinMixin, "SetTexture", function(self, poiInfo)
+--     if registerdNames[poiInfo.atlasName] then return end
+
+--     print("öpö", poiInfo.atlasName)
+--     DevTool:AddData(poiInfo, poiInfo.atlasName)
+-- end)
+
+-- print("ddasdassddddd", DragonridingRaceDataProviderMixin.RefreshAllData)
+
+-- hooksecurefunc(DragonridingRaceDataProviderMixin, "RefreshAllData", function(self)
+
+--     print("ddddd")
+-- end)
 
 
 
